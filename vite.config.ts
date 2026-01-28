@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     
     return {
       // 關鍵修正：設定基礎路徑，確保 GitHub Pages 能正確找到靜態資源
-      base: '/KEELUNG-PARKING-PCM/',
+      base: '/KEELUNG-PARKING-PCM-v6.0/',
       
       server: {
         port: 3000,
