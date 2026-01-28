@@ -1,0 +1,5 @@
+{
+  "name": "Keelung Parking Management System test_ver.6.0",
+  "description": "-增加密碼驗證/以及忘記密碼的功能\n-增加雜湊函數\n-增加初次登入修改密碼\n-調整上傳 Google Drive功能",
+  "requestFramePermissions": []
+}
