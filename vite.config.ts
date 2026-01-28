@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   
   return {
     // 1. 設定基礎路徑：必須與你的 GitHub 倉庫名稱完全一致，前後都要有斜線
-    base: '/KEELUNG-PARKING-PCM-v6.0/',
+    base: '/KEELUNG-PARKING-PCM/',
     
     plugins: [react()],
     
