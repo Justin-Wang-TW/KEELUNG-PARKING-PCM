@@ -230,16 +230,23 @@ const AssetManagement: React.FC<AssetManagementProps> = ({ currentUser, assets, 
       tempId: Date.now().toString() + Math.random()
     }]);
     
-    // Clear only Name and Unit as requested, keep others including file
+    // Clear only Name as requested, keep others including unit and file
     setCurrentBatchItem(prev => ({
       ...prev,
-      name: '',
-      unit: ''
+      name: ''
     }));
   };
 
   const handleRemoveFromQueue = (tempId: string) => {
     setBatchAddItems(prev => prev.filter(item => item.tempId !== tempId));
+  };
+
+  const handleEditFromQueue = (item: BatchAssetItem) => {
+    // Remove from queue
+    handleRemoveFromQueue(item.tempId);
+    // Load into form
+    const { tempId, ...itemData } = item;
+    setCurrentBatchItem(itemData);
   };
 
   const handleSubmitBatchAdd = async (e: React.FormEvent) => {
@@ -1644,13 +1651,22 @@ const AssetManagement: React.FC<AssetManagementProps> = ({ currentUser, assets, 
                           )}
                         </div>
                         
-                        <button
-                          onClick={() => handleRemoveFromQueue(item.tempId)}
-                          className="text-gray-400 hover:text-red-600 p-1 rounded-full hover:bg-red-50 transition-colors"
-                          title="移除"
-                        >
-                          <Trash2 className="w-5 h-5" />
-                        </button>
+                        <div className="flex flex-col gap-2">
+                          <button
+                            onClick={() => handleEditFromQueue(item)}
+                            className="text-gray-400 hover:text-blue-600 p-1 rounded-full hover:bg-blue-50 transition-colors"
+                            title="編輯"
+                          >
+                            <Edit className="w-5 h-5" />
+                          </button>
+                          <button
+                            onClick={() => handleRemoveFromQueue(item.tempId)}
+                            className="text-gray-400 hover:text-red-600 p-1 rounded-full hover:bg-red-50 transition-colors"
+                            title="移除"
+                          >
+                            <Trash2 className="w-5 h-5" />
+                          </button>
+                        </div>
                       </div>
                     ))
                   ) : (
